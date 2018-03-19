@@ -11,7 +11,7 @@ web/wp
 web/.htaccess
 
 # Dotenv
-.env
+#.env
 .env.*
 !.env.example
 
