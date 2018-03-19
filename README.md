@@ -72,4 +72,6 @@ https://github.com/hikarine3
 
 https://cloud.docker.com/swarm/1stclass/repository/list
 
+https://www.npmjs.com/package/@hikarine3/
+
 http://search.cpan.org/~hikarine/
