@@ -1,0 +1,37 @@
+# docker-compose up
+version: '3.3'
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - dbdata:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  apache:
+    depends_on:
+      - db
+    image: 1stclass/php72-apache24
+    # Left side is accible port
+    ports:
+      - "80:80"
+    restart: always
+    environment:
+      APACHE_DOCUMENT_ROOT: /var/www/web
+      WORDPRESS_DB_PREFIX: bdr
+      WORDPRESS_DATABASE: wordpress
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+    volumes:
+      - type: bind
+        source: ./bedrock
+        target: /var/www
+
+volumes:
+  dbdata:
