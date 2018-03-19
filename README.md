@@ -2,6 +2,13 @@
 This is for creating initail environment of developing Wordpress env with bedrock + docker.
 You can use this for initiation of your WP project.
 
+# Used software
+- docker-compose
+- Mysql 5.7
+- PHP 7.2
+- Wordpress latest
+- Bedrock (Fully coposer based WP dev env)
+
 # How to run docker env
 
 ## Kill all running process
@@ -18,7 +25,7 @@ docker compose up;
 
 
 ## If you want to change salt
-cd berock;
+cd bedrock;
 
 wp dotenv salts regenerate
 
@@ -28,13 +35,13 @@ cd bedrock;
 composer.phar update;
 
 ## Add wordpress module
-### Edit bedrock/composer.json referecing to https://wpackagist.org
+Edit bedrock/composer.json referecing to https://wpackagist.org
 
 ## Confirm web sit
-### Access to http://localhost/
+Access to http://localhost/
 
 ## Edit source code
-### Edit files under bedrock/web/app
+Edit files under bedrock/web/app
 
 # Reference
 ## How this repository is created
