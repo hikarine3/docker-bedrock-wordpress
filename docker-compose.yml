@@ -4,8 +4,8 @@ version: '3.3'
 services:
   db:
     image: mysql:5.7
-    volumes:
-      - dbdata:/var/lib/mysql
+    volumes: 
+      - ./mysqldata:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: somewordpress
@@ -33,5 +33,5 @@ services:
         source: ./bedrock
         target: /var/www
 
-volumes:
-  dbdata:
+#volumes:
+#  dbdata:
