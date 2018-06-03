@@ -16,7 +16,7 @@ services:
   apache:
     depends_on:
       - db
-    image: 1stclass/php72-apache24
+    image: 1stclass/docker-apache24-php7
     # Left side is accible port
     ports:
       - "80:80"
