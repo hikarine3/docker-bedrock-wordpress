@@ -1,9 +1,9 @@
-# docker-compose up
 version: '3.3'
 
 services:
   db:
     image: mysql:5.7
+    container_name: local_mysql
     volumes: 
       - ./mysqldata:/var/lib/mysql
     restart: always
@@ -17,7 +17,7 @@ services:
     depends_on:
       - db
     image: 1stclass/docker-apache24-php7
-    # Left side is accible port
+    container_name: local_web1
     ports:
       - "80:80"
     restart: always
