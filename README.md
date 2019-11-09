@@ -14,20 +14,7 @@ composerを使う事で、プラグイン等のインストールについては
 - Wordpress
 - Bedrock
 
-# How to make docker env up (Dcoker環境の立ち上げ)
-After you make docker run on your machine, make docker containers up
-
-Dockerプロセスを走らせるPC上で動かしてから、dockerコンテナをUPします
-
-```
-docker-compose up;
-```
-
-If you want customize docker's setting, edit docker-compose.yml before "docker-compose up"
-
-もしもdockerの設定をカスタマイズしたい場合、docker-compose upを打つ前にdocker-composer.ymlを編集して下さい
-
-## Make your salt unique for security (パスワードのSaltをユニークにする)
+## Make your WordPress's salt unique for security (WordPressのパスワードのSaltをユニークにする)
 
 ```
 cd bedrock;
@@ -54,18 +41,39 @@ Edit bedrock/composer.json referencing to https://wpackagist.org/ and after edit
 
 bedrock/composer.jsonを https://wpackagist.org/ を参照しながら編集して、編集が終わったらcomposer.phar updateを叩いて下さい。
 
+
+# Make WordPress environment available on your PC using Docker (Dcokerを活用してWordPress環境を立ち上げる)
+
+In the same directory with docker-compose.yml
+
+```
+docker-compose up -d;
+```
+
+If you want customize docker's setting, edit docker-compose.yml before "docker-compose up"
+
+docker-compose.ymlと同じディレクトリで
+
+
+```
+docker-compose up -d;
+```
+
+と打って下さい。
+
+もしもdockerの設定をカスタマイズしたい場合、docker-compose upを打つ前にdocker-composer.ymlを編集して下さい
+
+
 ## Confirm web site (Local環境での作動の確認)
 Access to  http://localhost/
 
 http://localhost/ にアクセスして作動を確認して下さい
 
-# Reference: How this repository was created (参考情報: どのようにこのレポジトリが作られたか)
+
+## Stop running Docker containers for WordPress (WordPressのDockerコンテナを停止する)
 
 ```
-composer.phar create-project roots/bedrock bedrock;
-cd bedrock;
-wp package install aaemnnosttv/wp-cli-dotenv-command
-wp dotenv salts regenerate
+docker-compose down;
 ```
 
 # License (ライセンス)
