@@ -1,13 +1,11 @@
 # What is this repository (このレポジトリは何ですか)
-This is for creating initail environment of developing Wordpress env with bedrock + docker.
+This repository is for creating initial environment of developing WordPress's env with bedrock ( WordPress's best practice boilerplate https://roots.io/bedrock/ ) + docker, which will enable you to manage version of WordPress, themes and plugins through PHP's composer.
 
-You can use this for initiation of your WP project.
+You can use this for initiation of all your WordPress's projects.
 
-このレポジトリはWordpressをdockerで立ち上げられる形で
+このレポジトリはWordpressをdockerで立ち上げられる形で、bedrock ( https://roots.io/bedrock/ )というWPの管理のベストプラクティスの仕組を活用して、本体・プラグイン・テーマのバージョン管理を、PHPのcomposerの仕組みの中で管理できるようにする仕組を提供しています。
 
-bedrock https://roots.io/bedrock/ というWPの管理のベストプラクティスの仕組を活用して、本体・プラグイン・テーマのバージョン管理を、PHPのcomposerの仕組みの中で管理できるようにする仕組を提供しています。
-
-composerを使う事で、プラグイン等のインストールについて、git等のバージョン管理の中で管理し、再現&構築の仕方のチーム間の共有をする事が出来るようになります。
+composerを使う事で、プラグイン等のインストールについてはcomposer.jsonに記録する事でgit等のバージョン管理の中で管理し、再現&構築の仕方のチーム間の共有をする事が出来るようになります。
 
 # Used software (使われているソフト)
 - docker-compose
@@ -17,7 +15,7 @@ composerを使う事で、プラグイン等のインストールについて、
 - Bedrock
 
 # How to make docker env up (Dcoker環境の立ち上げ)
-After you make docker run on your machine, make docker containers  up
+After you make docker run on your machine, make docker containers up
 
 Dockerプロセスを走らせるPC上で動かしてから、dockerコンテナをUPします
 
