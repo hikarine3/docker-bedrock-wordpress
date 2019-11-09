@@ -1,50 +1,44 @@
-# What is this document
+# What is this repository (このレポジトリは何ですか)
 This is for creating initail environment of developing Wordpress env with bedrock + docker.
 You can use this for initiation of your WP project.
 
-# Used software
+このレポジトリはWordpressをdockerで立ち上げられる形で
+bedrockという仕組を使って
+本体・プラグイン・テーマのバージョン管理を
+PHPのcomposerの仕組みの中で管理できるようにする仕組を提供しています。
+composerを使う事で、プラグイン等のインストールについて、git等のバージョン管理の中で管理し、再現&構築の仕方のチーム間の共有をする事が出来るようになります。
+
+# Used software (使われているソフト)
 - docker-compose
 - Mysql 5.7
 - PHP 7.2
-- Wordpress latest
+- Wordpress
 - Bedrock (Fully coposer based WP dev env)
 
-# How to run docker env
+# How to make docker env up (Dcoker環境の立ち上げ)
+After you make docker run on your machine, make docker-compose up
 
-## Kill all running process
-docker kill $(docker ps -q);
+docker-compose up;
 
-## Delete all stopped containers (including data-only containers)
-docker rm $(docker ps -a -q);
+If you want customize docker's setting, edit docker-compose.yml before "docker up"
 
-## Use docker
-docker compose up;
-
-## If you want customize
-### Edit docker-compose.yml before "docker up"
-
-
-## If you want to change salt
+## Make your salt unique for security (パスワードのSaltをユニークにする)
 cd bedrock;
 
-wp dotenv salts regenerate
+wp dotenv salts regenerate;
 
-## Prepare necessary php modules
+## Prepare necessary php modules (Wordpress本体含めPHPのPlugin/テーマの取得・更新)
 cd bedrock;
 
 composer.phar update;
 
-## Add wordpress module
+## Add wordpress plugin (Wordpress Pluginの追加)
 Edit bedrock/composer.json referecing to https://wpackagist.org
 
-## Confirm web sit
+## Confirm web site (Local環境での作動の確認)
 Access to http://localhost/
 
-## Edit source code
-Edit files under bedrock/web/app
-
-# Reference
-## How this repository is created
+# Reference: How this repository was created (参考情報: どのようにこのレポジトリが作られたか)
 composer.phar create-project roots/bedrock bedrock;
 
 cd bedrock;
@@ -53,25 +47,29 @@ wp package install aaemnnosttv/wp-cli-dotenv-command
 
 wp dotenv salts regenerate
 
-
-# License
+# License (ライセンス)
 
 MIT
 
-# Author
+# Author (作者)
 
 Hajime Kurita
 
-An adminstrator of https://sakuhindb.com/ , http://minakoe.jp/ and so on
-
-https://twitter.com/hikarine3
-
-https://en.sakuhindb.com/pe/Administrator/
-
+## Github
 https://github.com/hikarine3
 
-https://cloud.docker.com/swarm/1stclass/repository/list
+## JP Twitter
+https://twitter.com/hikarine3
 
-https://www.npmjs.com/package/@hikarine3/
+## EN Twitter
+https://twitter.com/hajimekurita
 
-http://search.cpan.org/~hikarine/
+## CN Tweet
+https://www.weibo.com/u/7334273967
+
+## JP Corporate page
+https://1stclass.co.jp/
+
+## EN Corporate page
+https://1stclass.co.jp/en/
+
