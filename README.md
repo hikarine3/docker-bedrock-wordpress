@@ -5,13 +5,7 @@ You can use this for initiation of your WP project.
 
 このレポジトリはWordpressをdockerで立ち上げられる形で
 
-bedrockという仕組を使って
-
-
-本体・プラグイン・テーマのバージョン管理を
-
-
-PHPのcomposerの仕組みの中で管理できるようにする仕組を提供しています。
+bedrock https://roots.io/bedrock/ というWPの管理のベストプラクティスの仕組を活用して、本体・プラグイン・テーマのバージョン管理を、PHPのcomposerの仕組みの中で管理できるようにする仕組を提供しています。
 
 composerを使う事で、プラグイン等のインストールについて、git等のバージョン管理の中で管理し、再現&構築の仕方のチーム間の共有をする事が出来るようになります。
 
