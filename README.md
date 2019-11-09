@@ -58,11 +58,14 @@ But docker will help you to construct local development environment at least.
 但し、Dockerは、貴方のPC上に開発環境を手軽に構築するのを手助けしてくれるでしょう。
 
 ## Add wordpress plugin (Wordpress Pluginの追加)
-Edit bedrock/composer.json referecing to https://wpackagist.org
+Edit bedrock/composer.json referencing to [wpackagist]:https://wpackagist.org and after editing, type composer.phar update.
+
+bedrock/composer.jsonを [wpackagist]:https://wpackagist.org を参照しながら編集して、編集が終わったらcomposer.phar updateを叩いて下さい。
 
 ## Confirm web site (Local環境での作動の確認)
-Access to 
-http://localhost/
+Access to  http://localhost/
+
+http://localhost/ にアクセスして作動を確認して下さい
 
 # Reference: How this repository was created (参考情報: どのようにこのレポジトリが作られたか)
 
