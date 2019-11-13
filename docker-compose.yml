@@ -2,8 +2,8 @@ version: '3.3'
 
 services:
   db:
-    image: mysql:5.7
-    container_name: local_mysql
+    image: mariadb:latest
+    container_name: local_mariadb
     volumes: 
       - ./mysqldata:/var/lib/mysql
     restart: always
