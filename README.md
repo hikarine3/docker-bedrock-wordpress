@@ -110,7 +110,7 @@ Hajime Kurita
 - JP: https://twitter.com/hikarine3
 - CN: https://www.weibo.com/u/7334273967
 
-# Techincoal web services
+# Technical web services
 ## VPS & Infra
 - EN: https://vpsranking.com/
 - JP: https://vpshikaku.com/
@@ -119,11 +119,15 @@ Hajime Kurita
 ## Programming
 - EN: https://programminglang.com/en/
 - JP: https://programminglang.com/ja/
-- CN: https://programminglang.com/zh/
 
-## Github
-https://github.com/hikarine3
+## Source code repositories
+- Github https://github.com/hikarine3
+- Docker https://hub.docker.com/u/1stclass/
+- NPM https://www.npmjs.com/~hikarine3
+- Perl http://search.cpan.org/~hikarine/
+- PHP https://packagist.org/packages/hikarine3/
+- Python https://pypi.org/user/hikarine3/
 
-## Corporation page
+# Corporation page
 - EN: https://1stclass.co.jp/en/
 - JP: https://1stclass.co.jp/
