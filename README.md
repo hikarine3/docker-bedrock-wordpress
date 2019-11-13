@@ -122,3 +122,13 @@ https://1stclass.co.jp/
 ## EN Corporate page
 https://1stclass.co.jp/en/
 
+## Other references (その他参考資料)
+### EN: VPS List with benchmark
+https://vpsranking.com/
+
+### JP: VPS比較一覧
+https://vpshikaku.com/
+
+### WordPressの利用法/設定/有用プラグイン/テーマ/開発法まとめ
+https://vpshikaku.com/wordpress%e3%81%ae%e8%a8%ad%e5%ae%9a/
+
