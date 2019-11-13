@@ -96,39 +96,34 @@ https://wordpress.org/plugins/all-in-one-wp-migration/
 docker-compose down;
 ```
 
-# License (ライセンス)
+# License
 
 MIT
 
-# Author (作者)
+# Author
 
+## Name
 Hajime Kurita
+
+## Twitter
+- EN: https://twitter.com/hajimekurita
+- JP: https://twitter.com/hikarine3
+- CN: https://www.weibo.com/u/7334273967
+
+# Techincoal web services
+## VPS & Infra
+- EN: https://vpsranking.com/
+- JP: https://vpshikaku.com/
+- CN: https://vpsranking.com/zh/
+
+## Programming
+- EN: https://programminglang.com/en/
+- JP: https://programminglang.com/ja/
+- CN: https://programminglang.com/zh/
 
 ## Github
 https://github.com/hikarine3
 
-## JP Twitter
-https://twitter.com/hikarine3
-
-## EN Twitter
-https://twitter.com/hajimekurita
-
-## CN Tweet
-https://www.weibo.com/u/7334273967
-
-## JP Corporate page
-https://1stclass.co.jp/
-
-## EN Corporate page
-https://1stclass.co.jp/en/
-
-## Other references (その他参考資料)
-### EN: VPS List with benchmark
-https://vpsranking.com/
-
-### JP: VPS比較一覧
-https://vpshikaku.com/
-
-### WordPressの利用法/設定/有用プラグイン/テーマ/開発法まとめ
-https://vpshikaku.com/wordpress%e3%81%ae%e8%a8%ad%e5%ae%9a/
-
+## Corporation page
+- EN: https://1stclass.co.jp/en/
+- JP: https://1stclass.co.jp/
