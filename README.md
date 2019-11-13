@@ -10,7 +10,7 @@ composerを使う事で、プラグイン等のインストールについては
 
 # Used software (使われているソフト)
 - docker-compose
-- Mysql 5.7
+- MariaDB: latest
 - PHP 7.2
 - Wordpress
 - Bedrock
