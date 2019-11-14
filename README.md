@@ -21,7 +21,7 @@ You can use this for initiation of all your WordPress's projects.
 - docker-compose
 - MariaDB: latest
 - PHP 7.3
-- Wordpress
+- WordPress
 - Bedrock
 
 # How to Install (インストール手順)
@@ -109,7 +109,7 @@ https://wordpress.org/plugins/all-in-one-wp-migration/
 といったプラグインを使って、ローカルPCからリモートサーバーに移動させれば、リモートでも動かす事が出来ます。
 
 
-# Add wordpress plugin (Wordpress Pluginの追加)
+# Add wordpress plugin (WordPress Pluginの追加)
 
 Edit bedrock/composer.json referencing to https://wpackagist.org/ and after editing, type composer.phar update.
 
@@ -117,7 +117,7 @@ It is important for you not to install anything through WordPress's admin screen
 
 By it, you can make the version down if necessary easily through command line even if admin screen becomes blank by updated WP plugins.
 
-# Wordpress Pluginの追加
+# WordPress Pluginの追加
 bedrock/composer.jsonを https://wpackagist.org/ を参照しながら編集して、編集が終わったらcomposer.phar updateを叩いて下さい。
 
 管理画面から追加せず、あくまでcomposer.jsonの編集とcomposer updateだけで管理するのが、ソースコードでWordPressの構成管理を行い切るコツです。
