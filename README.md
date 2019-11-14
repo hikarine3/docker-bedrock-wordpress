@@ -17,12 +17,12 @@ You can use this for initiation of all your WordPress's projects.
 - 複数のWordPressの環境を、同一ソースコード・同一サーバー上に、簡単に立ち上げる事が出来ます。Docker環境ではdocker-compose.ymlを、Dockerを使わない環境では.env.Webホスト名を触るだけで済みます。
 
 # Used software (使われているソフト)
-- Docker
-- docker-compose
-- MariaDB: latest
-- PHP 7.3
-- WordPress
-- Bedrock
+- Docker https://www.docker.com/products/docker-desktop
+- docker-compose https://docs.docker.com/compose/install/
+- MariaDB docker: https://hub.docker.com/_/mariadb
+- Apache 2.4 & PHP 7.3 docker: https://hub.docker.com/r/1stclass/docker-apache24-php7
+- WordPress: https://wordpress.org/download/
+- Bedrock: https://roots.io/bedrock/
 
 # How to Install (インストール手順)
 ```
