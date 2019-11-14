@@ -26,15 +26,15 @@ You can use this for initiation of all your WordPress's projects.
 
 # How to Install (インストール手順)
 ```
-# Download github repository
+# Download github repository ( githubのレポジトリーをダウンロード ) #
 git clone git@github.com:hikarine3/docker-bedrock-wordpress.git;
 cd docker-bedrock-wordpress;
 cd bedrock;
 
-# Install PHP modules including WordPress Core, Themes adn plugins;
+# Install PHP modules including WordPress Core, Themes adn plugins (WPのファイル群をインストール) #
 composer.phar update;
 
-# Create unique salt for security of your WordPress
+# Create unique salt for security of your WordPress (Saltをユニークに更新してセキュリティ向上) #
 wp dotenv salts regenerate;
 ```
 
@@ -120,7 +120,7 @@ Edit bedrock/composer.json referencing to
 
 Plugins
 
-https://wpackagist.org/ ( Package must be reflected to https://wpackagist.org/ , which has some time lag)
+https://wpackagist.org/ ( Package must be reflected to https://wpackagist.org/ , which has some timelag)
 
 
 Themes
