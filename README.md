@@ -7,7 +7,8 @@ This repository is for initiating your WordPress development environment with be
 - Multiple WordPress's environment can be easily created just by increasing definition of WordPress's environment defined in docker-compose.yml
 - Even for production environment if you are not using docker, you can easily have multiple WordPress environment with 1 source code on 1 instance using some trick for .env and upload directory 
 
-You can use this for initiation of all your WordPress's projects.
+You can use this for initiation of all your WordPress's projects.  
+If you have any questions, please ask to this repository's admin [@hajimekurita](https://twittter.com/hajimekurita) through twitter DM after following its account.
 
 ## 特徴 (日本語)
 
@@ -15,6 +16,11 @@ You can use this for initiation of all your WordPress's projects.
 - WordPress本体、プラグイン、テーマ全てがPHPのcomposerでインストール・更新できます。composer.jsonの定義に従ってインストールされるので、構成をGit等でバージョン管理し、環境再現が簡単になります。
 - Dockerがサポートされており、必要なら簡単にDockerでWordPressを立ち上げ、開発する事が出来ます。
 - 複数のWordPressの環境を、同一ソースコード・同一サーバー上に、簡単に立ち上げる事が出来ます。Docker環境ではdocker-compose.ymlを、Dockerを使わない環境では.env.Webホスト名を触るだけで済みます。
+
+このWordPressのインストール方法は「[WordPressの利用法/設定/有用プラグイン/テーマ/開発法まとめ](https://vpshikaku.com/wordpress%E3%81%AE%E8%A8%AD%E5%AE%9A/)」で紹介されてる方法の内、上級者向けの方法になります。  
+上級者向け(=エンジニア向け)ですが、使いこなせれば、相当便利な手法になります。
+このページは「英語 => 日本語」と、同じ内容が別言語で説明されてる構成になっています。  
+ご質問がありましたら、このレポジトリの管理者 [@hikarine](https://twitter.com/hikarine3) にTwitterでフォローしてDMでお問合せ下さい。
 
 # Used software (使われているソフト)
 - Docker https://www.docker.com/products/docker-desktop
