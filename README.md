@@ -138,17 +138,17 @@ Hajime Kurita
 - JP: https://twitter.com/hikarine3
 - CN: https://www.weibo.com/u/7334273967
 
-# Technical web services
-## VPS & Infra
+## Technical web services which can help you
+### VPS & Infra
 - EN: https://vpsranking.com/
 - JP: https://vpshikaku.com/
 - CN: https://vpsranking.com/zh/
 
-## Programming
+### Programming
 - EN: https://programminglang.com/en/
 - JP: https://programminglang.com/ja/
 
-## Source code repositories
+### Source code repositories
 - Github https://github.com/hikarine3
 - Docker https://hub.docker.com/u/1stclass/
 - NPM https://www.npmjs.com/~hikarine3
@@ -156,6 +156,6 @@ Hajime Kurita
 - PHP https://packagist.org/packages/hikarine3/
 - Python https://pypi.org/user/hikarine3/
 
-# Corporation page & services
+### Corporation page & services
 - EN: https://1stclass.co.jp/en/services-en/
 - JP: https://1stclass.co.jp/services/
