@@ -114,16 +114,78 @@ https://wordpress.org/plugins/all-in-one-wp-migration/
 
 といったプラグインを使って、ローカルPCからリモートサーバーに移動させれば、リモートでも動かす事が出来ます。
 
-# Add wordpress plugin
+# Add wordpress plugin and themes
 
-Edit bedrock/composer.json referencing to https://wpackagist.org/ and after editing, type composer.phar update.
+Edit bedrock/composer.json referencing to 
+
+Plugins
+
+https://wpackagist.org/ ( Package must be reflected to https://wpackagist.org/ , which has some time lag)
+
+
+Themes
+
+https://wordpress.org/themes/ 
+
+After editing composer.json, type `composer.phar update`.
+
+composer.json
+```
+  "require": {
+    "composer/installers": "*",
+    "johnpbloch/wordpress": "*",
+    "oscarotero/env": "*",
+    "php": ">=7.1",
+    "roots/wp-password-bcrypt": "*",
+    "vlucas/phpdotenv": "2.5.1",
+
+    "wpackagist-plugin/disable-author-pages": "*",
+    "wpackagist-plugin/disable-comments": "*",
+    "wpackagist-plugin/duplicate-post": "*",
+
+    "wpackagist-theme/astra":"*",
+    "wpackagist-theme/online-shop":"*"
+  },
+```
 
 It is important for you not to install anything through WordPress's admin screen if you want to controll WordPress, themes and plugins through souce code.
 
 By it, you can make the version down if necessary easily through command line even if admin screen becomes blank by updated WP plugins.
 
-# WordPress Pluginの追加
-bedrock/composer.jsonを https://wpackagist.org/ を参照しながら編集して、編集が終わったらcomposer.phar updateを叩いて下さい。
+# WordPress Pluginやテーマの追加
+bedrock/composer.jsonを 
+
+プラグイン
+
+https://wordpress.org/plugins/ ( https://wpackagist.org/ に反映されてから使えるようになる/少々タイムラグ有り)
+
+や 
+
+テーマ
+
+https://wordpress.org/themes/
+
+を参照しながら編集して、編集が終わったら`composer.phar update`を叩いて下さい。
+
+composer.json
+```
+  "require": {
+    "composer/installers": "*",
+    "johnpbloch/wordpress": "*",
+    "oscarotero/env": "*",
+    "php": ">=7.1",
+    "roots/wp-password-bcrypt": "*",
+    "vlucas/phpdotenv": "2.5.1",
+
+    "wpackagist-plugin/disable-author-pages": "*",
+    "wpackagist-plugin/disable-comments": "*",
+    "wpackagist-plugin/duplicate-post": "*",
+
+    "wpackagist-theme/astra":"*",
+    "wpackagist-theme/online-shop":"*"
+  },
+```
+
 
 管理画面から追加せず、あくまでcomposer.jsonの編集とcomposer updateだけで管理するのが、ソースコードでWordPressの構成管理を行い切るコツです。
 
