@@ -15,7 +15,12 @@ Env::init();
  * Use Dotenv to set required environment variables and load .env file in root
  */
 $dotenv = new Dotenv\Dotenv($root_dir);
-if (file_exists($root_dir . '/.env')) {
+if (file_exists($root_dir . '/.env.'.$_SERVER['HTTP_HOST'])) {
+    $dotenv = new Dotenv\Dotenv($root_dir, '.env.'.$_SERVER['HTTP_HOST']);
+    $dotenv->load();
+    $dotenv->required(['DB_NAME', 'DB_USER', 'DB_PASSWORD', 'WP_HOME', 'WP_SITEURL']);
+}
+else if (file_exists($root_dir . '/.env')) {
     $dotenv->load();
     $dotenv->required(['DB_NAME', 'DB_USER', 'DB_PASSWORD', 'WP_HOME', 'WP_SITEURL']);
 }
@@ -81,3 +86,33 @@ define('DISALLOW_FILE_EDIT', true);
 if (!defined('ABSPATH')) {
     define('ABSPATH', $webroot_dir . '/wp/');
 }
+
+/* Customization to make this sytem workable for any projects */
+$matches = [];
+$dbname = env('DB_NAME');
+if( preg_match('/([a-z]+)\.[a-z]+$/', $_SERVER['HTTP_HOST'], $matches)) {
+    $dbname = $maches[1];
+}
+
+if( preg_match('/(cn|en|ja|kr|fr)\.'.$dbname.'\.[a-z]+$/', $_SERVER['HTTP_HOST'], $matches)) {
+    $dbname = $maches[1]."_".$dbname;
+    putenv('DB_NAME='.$dbname);
+}
+
+
+if($_SERVER['HTTP_HOST'] === 'localhost') {
+
+}
+else{
+    if(WP_ENV !== 'production') {
+        $dbname = WP_ENV.'_'.$dbname;
+        putenv('DB_NAME='.$dbname);
+    }
+
+    if($_SERVER['HTTP_HOST']){
+        putenv( 'WP_HOME=https://' . $_SERVER['HTTP_HOST'] );
+        putenv( 'WP_SITEURL=https://' . $_SERVER['HTTP_HOST'] );
+    }
+}
+define('FS_METHOD', "direct");
+define('UPLOADS', '../app/uploads/'.$_SERVER['HTTP_HOST'] );

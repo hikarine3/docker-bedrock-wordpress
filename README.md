@@ -1,84 +1,102 @@
 # What is this repository (このレポジトリは何ですか)
-This repository is for creating initial environment of developing WordPress's env with bedrock ( WordPress's best practice boilerplate https://roots.io/bedrock/ ) + docker, which will enable you to manage version of WordPress, themes and plugins through PHP's composer.
+This repository is for initiating your WordPress development environment with best architecture.
+
+## Features (English)
+- WordPress's core, plugin and themes can be updated through PHP's composer. You can control all of compontents through composer.json, which means that you can reproduce your WordPress's environment easily.
+- Docker is supported. So you can bring up your development environment easily just typing `docker-compose up`.
+- Multiple WordPress's environment can be easily created just by increasing definition of WordPress's environment defined in docker-compose.yml
+- Even for production environment if you are not using docker, you can easily have multiple WordPress environment with 1 source code on 1 instance using some trick for .env and upload directory 
 
 You can use this for initiation of all your WordPress's projects.
 
+## 特徴 (日本語)
 
-このレポジトリはWordpressをdockerで立ち上げられる形で、bedrock ( https://roots.io/bedrock/ )というWPの管理のベストプラクティスの仕組を活用して、本体・プラグイン・テーマのバージョン管理を、PHPのcomposerの仕組みの中で管理できるようにする仕組を提供しています。
-
-composerを使う事で、プラグイン等のインストールについてはcomposer.jsonに記録する事でgit等のバージョン管理の中で管理し、再現&構築の仕方のチーム間の共有をする事が出来るようになります。
+このレポジトリはWordPressで将来の運用を見越した開発を行うにあたっての、ベストな構成を提供するWordPress開発テンプレートとなっています。
+- WordPress本体、プラグイン、テーマ全てがPHPのcomposerでインストール・更新できます。composer.jsonの定義に従ってインストールされるので、構成をGit等でバージョン管理し、環境再現が簡単になります。
+- Dockerがサポートされており、必要なら簡単にDockerでWordPressを立ち上げ、開発する事が出来ます。
+- 複数のWordPressの環境を、同一ソースコード・同一サーバー上に、簡単に立ち上げる事が出来ます。Docker環境ではdocker-compose.ymlを、Dockerを使わない環境では.env.Webホスト名を触るだけで済みます。
 
 # Used software (使われているソフト)
+- Docker
 - docker-compose
 - MariaDB: latest
 - PHP 7.3
 - Wordpress
 - Bedrock
 
-## Make your WordPress's salt unique for security (WordPressのパスワードのSaltをユニークにする)
-
+# How to Install (インストール手順)
 ```
+# Download github repository
+git clone git@github.com:hikarine3/docker-bedrock-wordpress.git;
+cd docker-bedrock-wordpress;
 cd bedrock;
+
+# Install PHP modules including WordPress Core, Themes adn plugins;
+composer.phar update;
+
+# Create unique salt for security of your WordPress
 wp dotenv salts regenerate;
 ```
 
-## Prepare necessary php modules (Wordpress本体含めPHPのPlugin/テーマの取得・更新)
+# Make development environment up through docker
+
+In the environment where you are making Docker running,
 
 ```
-cd bedrock;
-composer.phar update;
-```
-
-Important thing is that you can update WordPress's set by typing composer update, so whether you use docker or not is not matter.
-
-But docker will help you to construct local development environment at least.
-
-
-尚、肝はbedrockディレクトリ内で、composer updateを打つ事で、composer.jsonの内容に対応してWordpress本体・テーマ・プラグインが更新される事なので、Dockerを立ち上げるはありません(Dockerも使えるというだけ)。
-
-但し、Dockerは、貴方のPC上に開発環境を手軽に構築するのを手助けしてくれるでしょう。
-
-## Add wordpress plugin (Wordpress Pluginの追加)
-Edit bedrock/composer.json referencing to https://wpackagist.org/ and after editing, type composer.phar update.
-
-
-bedrock/composer.jsonを https://wpackagist.org/ を参照しながら編集して、編集が終わったらcomposer.phar updateを叩いて下さい。
-
-
-# Make WordPress environment available on your PC using Docker (Dcokerを活用してWordPress環境を立ち上げる)
-
-If you want customize docker's setting, edit docker-compose.yml before "docker-compose up".
-
-You can set password of systems and so on.
-
-In the same directory with docker-compose.yml
-
-```
+cd docker-bedrock-wordpress;
 docker-compose up -d;
 ```
 
-
-パスワード等docker環境の設定をカスタマイズしたい場合、docker-compose upを打つ前にdocker-composer.ymlを編集して下さい
-
-編集が終わったら、docker-compose.ymlと同じディレクトリで
+If you want to stop docker's environment, you can stop it by typing
 
 ```
+docker-compose down;
+```
+
+Then after some time, you can see brought up WordPress's setting up screen at
+http://localhost/
+
+
+If you didn't edit docker-compose.yml, then you can login MariaDB by typing
+
+```
+mysql --host=127.0.0.1 --user=root --password=somewordpress
+```
+
+If you have changed user and password before you first make docker up, then change user and password.
+
+# 開発環境の立ち上げ
+
+Dockerが立ち上がってる環境で
+```
+cd docker-bedrock-wordpress;
 docker-compose up -d;
 ```
 
-と打って下さい
+と打ってください。
 
-## Confirm web site (Local環境での作動の確認)
-Access to  http://localhost/
+暫く経ったら、
 
-Then you will see WordPress's initial setting screen.
+http://localhost/
 
-You can develop using Docker's containers on your local PC and you can deploy the content just transfering source code with DB content using migration module like https://wordpress.org/plugins/all-in-one-wp-migration/
+でWordPressの設定画面を見る事が出来ます。
 
+MariaDBには、docker-compose.ymlがデフォルトの設定のままなら
+```
+mysql --host=127.0.0.1 --user=root --password=somewordpress
+```
+でログインできます。
 
-http://localhost/ にアクセスして作動を確認して下さい
+Docker環境を立ち上げる前に、ユーザーとパスワードを変更してたら、それに合わせて変更して下さい。
 
-WordPressの最初の設定画面が見れる筈です。
+docker環境を止めたければ
+
+```
+docker-compose down;
+```
+
+と叩いて下さい。
+
 
 後はローカルPCでWordPressのコンテンツ整備をしたら
 
@@ -90,11 +108,21 @@ https://wordpress.org/plugins/all-in-one-wp-migration/
 
 といったプラグインを使って、ローカルPCからリモートサーバーに移動させれば、リモートでも動かす事が出来ます。
 
-## Stop running Docker containers for WordPress (WordPressのDockerコンテナを停止する)
 
-```
-docker-compose down;
-```
+# Add wordpress plugin (Wordpress Pluginの追加)
+
+Edit bedrock/composer.json referencing to https://wpackagist.org/ and after editing, type composer.phar update.
+
+It is important for you not to install anything through WordPress's admin screen if you want to controll WordPress, themes and plugins through souce code.
+
+By it, you can make the version down if necessary easily through command line even if admin screen becomes blank by updated WP plugins.
+
+# Wordpress Pluginの追加
+bedrock/composer.jsonを https://wpackagist.org/ を参照しながら編集して、編集が終わったらcomposer.phar updateを叩いて下さい。
+
+管理画面から追加せず、あくまでcomposer.jsonの編集とcomposer updateだけで管理するのが、ソースコードでWordPressの構成管理を行い切るコツです。
+
+これにより、WordPressのプラグインのインストールで真っ白になってしまったとしても、簡単にcomposer.jsonを編集してcomposer updateするだけで、問題のプラグインを元に戻す事も出来ますし、問題の解決もより早く行えます。
 
 # License
 
@@ -128,6 +156,6 @@ Hajime Kurita
 - PHP https://packagist.org/packages/hikarine3/
 - Python https://pypi.org/user/hikarine3/
 
-# Corporation page
-- EN: https://1stclass.co.jp/en/
-- JP: https://1stclass.co.jp/
+# Corporation page & services
+- EN: https://1stclass.co.jp/en/services-en/
+- JP: https://1stclass.co.jp/services/
