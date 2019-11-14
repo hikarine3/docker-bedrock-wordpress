@@ -39,13 +39,18 @@ wp dotenv salts regenerate;
 ```
 
 # Make development environment up through docker
+First you have to install docker and make the process run.
 
-In the environment where you are making Docker running,
+Then under the directory of docker-bedrock-wordpress which has docker-composer.yml,
 
 ```
-cd docker-bedrock-wordpress;
-docker-compose up -d;
+docker-compose up;
 ```
+
+If you add -d, then you make the process run as daemon which will continue to run even after you close terminal
+
+Then after some time, you can see brought up WordPress's setting up screen at
+http://localhost:10080/
 
 If you want to stop docker's environment, you can stop it by typing
 
@@ -53,39 +58,40 @@ If you want to stop docker's environment, you can stop it by typing
 docker-compose down;
 ```
 
-Then after some time, you can see brought up WordPress's setting up screen at
-http://localhost/
-
-
 If you didn't edit docker-compose.yml, then you can login MariaDB by typing
 
 ```
-mysql --host=127.0.0.1 --user=root --password=somewordpress
+docker exec -it local_mariadb mysql --host=local_mariadb --user=root --password=ExampleRootPass
 ```
+
+through docker.
 
 If you have changed user and password before you first make docker up, then change user and password.
 
 # 開発環境の立ち上げ
+まず貴方はDockerのインストールをして、それを走らせておく必要があります。
 
-Dockerが立ち上がってる環境で
+その上で、docker-bedrock-wordpressディレクトリの中=docker-composer.ymlが置いてあるディレクトリで、
+
 ```
-cd docker-bedrock-wordpress;
-docker-compose up -d;
+docker-compose up;
 ```
 
 と打ってください。
 
+尚「 -d」をつけて打つとターミナルを閉じてもプロセスは走り続けます。
+
 暫く経ったら、
 
-http://localhost/
+http://localhost:10080/
 
 でWordPressの設定画面を見る事が出来ます。
 
 MariaDBには、docker-compose.ymlがデフォルトの設定のままなら
 ```
-mysql --host=127.0.0.1 --user=root --password=somewordpress
+docker exec -it local_mariadb mysql --host=local_mariadb --user=root --password=ExampleRootPass
 ```
-でログインできます。
+でdocker経由だとログインできます。
 
 Docker環境を立ち上げる前に、ユーザーとパスワードを変更してたら、それに合わせて変更して下さい。
 
@@ -108,8 +114,7 @@ https://wordpress.org/plugins/all-in-one-wp-migration/
 
 といったプラグインを使って、ローカルPCからリモートサーバーに移動させれば、リモートでも動かす事が出来ます。
 
-
-# Add wordpress plugin (WordPress Pluginの追加)
+# Add wordpress plugin
 
 Edit bedrock/composer.json referencing to https://wpackagist.org/ and after editing, type composer.phar update.
 
@@ -123,6 +128,124 @@ bedrock/composer.jsonを https://wpackagist.org/ を参照しながら編集し�
 管理画面から追加せず、あくまでcomposer.jsonの編集とcomposer updateだけで管理するのが、ソースコードでWordPressの構成管理を行い切るコツです。
 
 これにより、WordPressのプラグインのインストールで真っ白になってしまったとしても、簡単にcomposer.jsonを編集してcomposer updateするだけで、問題のプラグインを元に戻す事も出来ますし、問題の解決もより早く行えます。
+
+# Add more WordPress environment through Docker
+
+```
+vi docker-compose.yml
+```
+
+Add more pattern form WordPress
+```
+  apache2:
+    depends_on:
+      - db
+    image: 1stclass/docker-apache24-php7
+    container_name: local_web1
+    ports:
+      - "10081:80"
+    restart: always
+    environment:
+      APACHE_DOCUMENT_ROOT: /var/www/web
+      WORDPRESS_DB_PREFIX: bdr
+      WORDPRESS_DATABASE: wordpress2
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wpdbuser
+      WORDPRESS_DB_PASSWORD: wpdbuserpass
+    volumes:
+      - type: bind
+        source: ./bedrock
+        target: /var/www
+```
+
+Then log in to mysql using root password and create new database and git access privilege to defined wordpress's user.
+
+```
+GRANT ALL PRIVILEGES ON wordpress2.* TO'wpdbuser'@'localhost';
+GRANT ALL PRIVILEGES ON wordpress2.* TO'wpdbuser'@'10.%';
+GRANT ALL PRIVILEGES ON wordpress2.* TO'wpdbuser'@'172.%';
+GRANT ALL PRIVILEGES ON wordpress2.* TO'wpdbuser'@'192.%';
+```
+
+After it, if you restart docker-compose environment, you shold be able to access to another WordPress environment with defined added Port.
+
+Stop docker
+```
+docker-compose down
+```
+
+Start again
+```
+docker-compose up
+```
+
+# 更なるWordPress環境のDockerを通じた追加
+
+```
+vi docker-compose.yml
+```
+
+追加のWordPress環境の定義を追加します。
+```
+  apache2:
+    depends_on:
+      - db
+    image: 1stclass/docker-apache24-php7
+    container_name: local_web1
+    ports:
+      - "10081:80"
+    restart: always
+    environment:
+      APACHE_DOCUMENT_ROOT: /var/www/web
+      WORDPRESS_DB_PREFIX: bdr
+      WORDPRESS_DATABASE: wordpress2
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wpdbuser
+      WORDPRESS_DB_PASSWORD: wpdbuserpass
+    volumes:
+      - type: bind
+        source: ./bedrock
+        target: /var/www
+```
+
+MariaDBにrootユーザーでログインして、docker-compose.ymlに定義した追加データベースを作成します。
+
+Docker経由でのアクセスは
+```
+docker exec -it local_mariadb mysql --host=local_mariadb --user=root --password=ExampleRootPass
+```
+
+```
+CREATE DATABASE wordpress2 character set utf8mb4;
+```
+
+また、ユーザーに作ったデータベースへのアクセスけんを付与します。
+```
+GRANT ALL PRIVILEGES ON wordpress2.* TO'wpdbuser'@'localhost';
+GRANT ALL PRIVILEGES ON wordpress2.* TO'wpdbuser'@'10.%';
+GRANT ALL PRIVILEGES ON wordpress2.* TO'wpdbuser'@'172.%';
+GRANT ALL PRIVILEGES ON wordpress2.* TO'wpdbuser'@'192.%';
+```
+
+それが終わったら
+
+```
+docker-compose down
+```
+
+で一旦docker環境を止めて
+
+```
+docker-compose up
+```
+
+で再起動して下さい。
+
+上記の例でしたら
+
+http://localhost:10081/
+
+が新たに使えるようになります。
 
 # License
 
