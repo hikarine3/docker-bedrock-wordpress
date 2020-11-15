@@ -5,7 +5,9 @@ This repository is for initiating your WordPress development environment with be
 - WordPress's core, plugin and themes can be updated through PHP's composer. You can control all of compontents through composer.json, which means that you can reproduce your WordPress's environment easily.
 - Docker is supported. So you can bring up your development environment easily just typing `docker-compose up`.
 - Multiple WordPress's environment can be easily created just by increasing definition of WordPress's environment defined in docker-compose.yml
-- Even for production environment if you are not using docker, you can easily have multiple WordPress environment with 1 source code on 1 instance using some trick for .env and upload directory 
+- Even for production environment if you are not using docker, you can easily have multiple WordPress environment with 1 source code on 1 instance using some trick for .env and upload directory. For example, if you want to use WordPress for vpsranking.com, you just have to prepare
+.env.vpsranking.com
+- Plugins which must be enabled for all environments are added in composer.json from the beginning
 
 You can use this for initiation of all your WordPress's projects.  
 If you have any questions, please ask to this repository's admin [@hajimekurita](https://twittter.com/hajimekurita) through twitter DM after following its account.
@@ -15,9 +17,14 @@ If you have any questions, please ask to this repository's admin [@hajimekurita]
 このレポジトリはWordPressで将来の運用を見越した開発を行うにあたっての、ベストな構成を提供するWordPress開発テンプレートとなっています。
 - WordPress本体、プラグイン、テーマ全てがPHPのcomposerでインストール・更新できます。composer.jsonの定義に従ってインストールされるので、構成をGit等でバージョン管理し、環境再現が簡単になります。
 - Dockerがサポートされており、必要なら簡単にDockerでWordPressを立ち上げ、開発する事が出来ます。
-- 複数のWordPressの環境を、同一ソースコード・同一サーバー上に、簡単に立ち上げる事が出来ます。Docker環境ではdocker-compose.ymlを、Dockerを使わない環境では.env.Webホスト名を触るだけで済みます。
+- 複数のWordPressの環境を、同一ソースコード・同一サーバー上に、簡単に立ち上げる事が出来ます。Docker環境ではdocker-compose.ymlを、Dockerを使わない環境では
+.env.Webホスト名
+例: vpshikaku.com の場合には
+.env.vpshikaku.com
+を触るだけで済みます。
+- どんな環境でもインストール・有効化するに値するPluginが最初からcomposer.jsonに定義されています
 
-このWordPressのインストール方法は「[WordPressの利用法/設定/有用プラグイン/テーマ/開発法まとめ](https://vpshikaku.com/wordpress%E3%81%AE%E8%A8%AD%E5%AE%9A/)」で紹介されてる方法の内、上級者向けの方法になります。  
+このWordPressのインストール方法は「[WordPressの利用法/設定/有用プラグイン/テーマ/開発法まとめ](https://vpshikaku.com/wordpress/)」で紹介されてる方法の内、上級者向けの方法になります。  
 上級者向け(=エンジニア向け)ですが、使いこなせれば、相当便利な手法になります。
 このページは「英語 => 日本語」と、同じ内容が別言語で説明されてる構成になっています。  
 ご質問がありましたら、このレポジトリの管理者 [@hikarine](https://twitter.com/hikarine3) にTwitterでフォローしてDMでお問合せ下さい。
@@ -29,6 +36,8 @@ If you have any questions, please ask to this repository's admin [@hajimekurita]
 - Apache 2.4 & PHP 7.3 docker: https://hub.docker.com/r/1stclass/docker-apache24-php7
 - WordPress: https://wordpress.org/download/
 - Bedrock: https://roots.io/bedrock/
+
+Web sever must allow symbolic links. (Webサーバーはシンボリックリンクを有効にしておく必要があります)
 
 # How to Install (インストール手順)
 ```
@@ -314,6 +323,8 @@ docker-compose up
 http://localhost:10081/
 
 が新たに使えるようになります。
+
+# 
 
 # License
 

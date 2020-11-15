@@ -14,6 +14,10 @@
       "name": "Ben Word",
       "email": "ben@benword.com",
       "homepage": "https://github.com/retlehs"
+    },
+    {
+      "name":"Hajime Kurita",
+      "homepage": "https://github.com/hikarine3"
     }
   ],
   "keywords": [
@@ -35,14 +39,25 @@
   "require": {
     "composer/installers": "*",
     "johnpbloch/wordpress": "*",
-    "oscarotero/env": "*",
+    "oscarotero/env": "1.2.0",
     "php": ">=7.1",
     "roots/wp-password-bcrypt": "*",
     "vlucas/phpdotenv": "2.5.1",
 
+    "wpackagist-plugin/autoptimize": "*",
     "wpackagist-plugin/disable-author-pages": "*",
-    "wpackagist-plugin/disable-comments": "*",
     "wpackagist-plugin/duplicate-post": "*",
+    "wpackagist-plugin/post-snippets":"*",
+    "wpackagist-plugin/show-modified-date-in-admin-lists":"*",
+    "wpackagist-plugin/simple-header-footer-html": "*",
+    "wpackagist-plugin/table-of-contents-plus": "",
+
+    "wpackagist-plugin/tiny-compress-images": "*",
+    "wpackagist-plugin/wps-hide-login": "*",
+    "wpackagist-plugin/wp-last-modified-info": "*",
+    "wpackagist-plugin/wp-mail-smtp": "2.4.0",
+    "wpackagist-plugin/wp-multibyte-patch":"*",
+    "wpackagist-plugin/wp-seopress": "*",
 
     "wpackagist-theme/astra":"*",
     "wpackagist-theme/online-shop":"*"

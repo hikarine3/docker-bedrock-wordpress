@@ -115,4 +115,4 @@ else{
     }
 }
 define('FS_METHOD', "direct");
-define('UPLOADS', '../app/uploads/'.$_SERVER['HTTP_HOST'] );
+define('UPLOADS', './app/uploads/'.$_SERVER['HTTP_HOST'] );
