@@ -45,13 +45,15 @@
     "vlucas/phpdotenv": "2.5.1",
 
     "wpackagist-plugin/autoptimize": "*",
+    "wpackagist-plugin/better-wp-security": "*",
     "wpackagist-plugin/disable-author-pages": "*",
+    "wpackagist-plugin/disable-json-api": "*",
+    "wpackagist-plugin/disable-xml-rpc": "*",
     "wpackagist-plugin/duplicate-post": "*",
     "wpackagist-plugin/post-snippets":"*",
     "wpackagist-plugin/show-modified-date-in-admin-lists":"*",
     "wpackagist-plugin/simple-header-footer-html": "*",
     "wpackagist-plugin/table-of-contents-plus": "",
-
     "wpackagist-plugin/tiny-compress-images": "*",
     "wpackagist-plugin/wps-hide-login": "*",
     "wpackagist-plugin/wp-last-modified-info": "*",

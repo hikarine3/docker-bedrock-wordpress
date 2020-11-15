@@ -1,3 +1,6 @@
+2.0.1
+Added more mandatory plugins mostly for securities
+
 2.0.0
 Due to some change in WordPress core, using ".." is not allowed for upload directory.
 So using symoblic link, I avoided the restirction, which means your web server must allow using symbolic link.
