@@ -53,7 +53,7 @@
     "wpackagist-plugin/post-snippets":"*",
     "wpackagist-plugin/show-modified-date-in-admin-lists":"*",
     "wpackagist-plugin/simple-header-footer-html": "*",
-    "wpackagist-plugin/table-of-contents-plus": "",
+    "wpackagist-plugin/table-of-contents-plus": "*",
     "wpackagist-plugin/tiny-compress-images": "*",
     "wpackagist-plugin/wps-hide-login": "*",
     "wpackagist-plugin/wp-last-modified-info": "*",
