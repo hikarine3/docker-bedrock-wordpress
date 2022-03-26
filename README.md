@@ -10,7 +10,7 @@ This repository is for initiating your WordPress development environment with be
 - Plugins which must be enabled for all environments are added in composer.json from the beginning
 
 You can use this for initiation of all your WordPress's projects.  
-If you have any questions, please ask to this repository's admin [@hajimekurita](https://twittter.com/hajimekurita) through twitter DM after following its account.
+If you have any questions, please ask to this repository's admin [@hajimekurita](https://twitter.com/hajimekurita) through twitter DM after following its account.
 
 ## 特徴 (日本語)
 
