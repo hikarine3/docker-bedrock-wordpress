@@ -33,18 +33,19 @@ if (file_exists($root_dir . '/.env')) {
     $env_files = file_exists($root_dir . '/.env.local')
         ? ['.env', '.env.local']
         : ['.env'];
+    
     $matches = [];
     if(preg_match('!^/(u\d+)/!', $_SERVER['REQUEST_URI'], $matches)){
-        $env_file = '.env.'.$matches[1];
-        if(file_exists($root_dir.'/'.$env_file)){
+        $env_file = new Dotenv\Dotenv($root_dir, '.env.'.$matches[1]);
+        if(file_exists($env_file)){
             $env_files = [$env_file];
         }
     }
-    else if($_SERVER['HTTP_HOST'] != 'localhost' && $_SERVER['HTTP_HOST'] != '127.0.0.1'){
-        $env_file = '.env.'.$_SERVER['HTTP_HOST'];
-        if(file_exists($root_dir.'/'.$env_file)){
-            $env_files = [$env_file];
-        }
+    else if($_SERVER['HTTP_HOST'] == 'xn--q6vw15bczbg0p.com' && preg_match('!/knowhow/!', $_SERVER['REQUEST_URI'])){
+        $dotenv = new Dotenv\Dotenv($root_dir, '.env.'.$_SERVER['HTTP_HOST'].'_knowhow');
+    }
+    else{
+        $dotenv = new Dotenv\Dotenv($root_dir, '.env.'.$_SERVER['HTTP_HOST']);
     }
     
     $dotenv = Dotenv\Dotenv::createUnsafeImmutable($root_dir, $env_files, false);
