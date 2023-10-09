@@ -33,7 +33,7 @@ If you have any questions, please ask to this repository's admin [@hajimekurita]
 - Docker https://www.docker.com/products/docker-desktop
 - docker-compose https://docs.docker.com/compose/install/
 - MariaDB docker: https://hub.docker.com/_/mariadb
-- Apache 2.4 & PHP 7.3 docker: https://hub.docker.com/r/1stclass/docker-apache24-php7
+- Apache 2.4 & PHP 9.2 docker: https://hub.docker.com/layers/library/php/8.2-apache/images/sha256-89ad17cca246e8a6ce742b5b89ce65b34ce6223204a282e45f72b4f758ff6401?context=explore
 - WordPress: https://wordpress.org/download/
 - Bedrock: https://roots.io/bedrock/
 

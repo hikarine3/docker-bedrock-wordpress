@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.8'
 
 services:
   db:
@@ -16,7 +16,7 @@ services:
   apache1:
     depends_on:
       - db
-    image: 1stclass/docker-apache24-php7
+    image: php:8.2-apache
     container_name: local_web1
     ports:
       - "10080:80"
