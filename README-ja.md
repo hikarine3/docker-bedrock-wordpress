@@ -130,7 +130,6 @@ composer.json
   },
 ```
 
-
 管理画面から追加せず、あくまでcomposer.jsonの編集とcomposer updateだけで管理するのが、ソースコードでWordPressの構成管理を行い切るコツです。
 
 これにより、WordPressのプラグインのインストールで真っ白になってしまったとしても、簡単にcomposer.jsonを編集してcomposer updateするだけで、問題のプラグインを元に戻す事も出来ますし、問題の解決もより早く行えます。

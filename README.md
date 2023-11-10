@@ -1,4 +1,8 @@
+# About other language's document (他の言語での説明について)
+日本語の説明は　README-ja.md　の方に書いてあるので、そちらを参照して下さい。
+
 # What is this repository
+
 This repository is for initiating your WordPress development environment with best architecture.
 
 ## Features (English)
