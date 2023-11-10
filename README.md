@@ -24,9 +24,9 @@ If you have any questions, please ask to this repository's admin [@hajimekurita]
 - WordPress: https://wordpress.org/download/
 - Bedrock: https://roots.io/bedrock/ 2023/09/28 ver https://github.com/roots/bedrock/commit/a90180a1a0c3b57f7ed561ddb65aca46de839c86
 
-# How to Install (インストール手順)
+# How to Install
 ```
-# Download github repository ( githubのレポジトリーをダウンロード ) #
+# Download github repository
 git clone git@github.com:hikarine3/docker-bedrock-wordpress.git;
 cd docker-bedrock-wordpress;
 cd bedrock;
