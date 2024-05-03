@@ -29,34 +29,36 @@ $webroot_dir = $root_dir . '/web';
  * Use Dotenv to set required environment variables and load .env file in root
  * .env.local will override .env if it exists
  */
-if (file_exists($root_dir . '/.env')) {
-    $env_files = file_exists($root_dir . '/.env.local')
-        ? ['.env', '.env.local']
-        : ['.env'];
-    $matches = [];
-    if(preg_match('!^/(u\d+)/!', $_SERVER['REQUEST_URI'], $matches)){
-        $env_file = '.env.'.$matches[1];
-        if(file_exists($root_dir.'/'.$env_file)){
-            $env_files = [$env_file];
-        }
-    }
-    else if($_SERVER['HTTP_HOST'] != 'localhost' && $_SERVER['HTTP_HOST'] != '127.0.0.1'){
-        $env_file = '.env.'.$_SERVER['HTTP_HOST'];
-        if(file_exists($root_dir.'/'.$env_file)){
-            $env_files = [$env_file];
-        }
-    }
-    
-    $dotenv = Dotenv\Dotenv::createUnsafeImmutable($root_dir, $env_files, false);
-
-    $dotenv->load();
-
-    $dotenv->required(['WP_HOME', 'WP_SITEURL']);
-    if (!env('DATABASE_URL')) {
-        $dotenv->required(['DB_NAME', 'DB_USER', 'DB_PASSWORD']);
+define('WP_CACHE', true);
+$specify_key_for_site = $_SERVER['HTTP_HOST'];
+$env_files = file_exists($root_dir . '/.env.local')
+    ? ['.env', '.env.local']
+    : ['.env'];
+$matches = [];
+if(preg_match('!^/(u\d+)/!', $_SERVER['REQUEST_URI'], $matches)){
+    $specify_key_for_site .= '_'.$matches[1];
+    $env_file = '.env.'.$specify_key_for_site;
+    if(file_exists($root_dir.'/'.$env_file)){
+        $env_files = [$env_file];
     }
 }
+else if($_SERVER['HTTP_HOST'] != 'localhost' && $_SERVER['HTTP_HOST'] != '127.0.0.1'){
+    $env_file = '.env.'.$_SERVER['HTTP_HOST'];
+    if(file_exists($root_dir.'/'.$env_file)){
+        $env_files = [$env_file];
+    }
+}
+// Check behavior
+define('UPLOADS', './app/uploads/'.$specify_key_for_site );
 
+$dotenv = Dotenv\Dotenv::createUnsafeImmutable($root_dir, $env_files, false);
+
+$dotenv->load();
+
+$dotenv->required(['WP_HOME', 'WP_SITEURL']);
+if (!env('DATABASE_URL')) {
+    $dotenv->required(['DB_NAME', 'DB_USER', 'DB_PASSWORD']);
+}
 /**
  * Set up our global environment constant and load its config first
  * Default: production
