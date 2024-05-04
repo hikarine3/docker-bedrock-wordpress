@@ -76,7 +76,6 @@ MariaDBには、docker-compose.ymlがデフォルトの設定のままなら
 ```
 docker exec -i -t `docker ps|grep mariadb|awk '{print $1}'` /bin/bash
 ```
-でろ
 でdocker経由だとログインできます。
 
 Docker環境を立ち上げる前に、ユーザーとパスワードを変更してたら、それに合わせて変更して下さい。
